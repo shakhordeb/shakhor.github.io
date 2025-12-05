@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio — Shakhor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f1724;
+            --card: #0b1220;
+            --muted: #9aa4b2;
+            --accent: #6ee7b7;
+            --glass: rgba(255, 255, 255, 0.04);
+            --radius: 16px;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background: linear-gradient(111deg, #071026 0%, #07172b 60%);
+            color: #e6eef6
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 28px
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 28px
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .avatar img {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #1f2937, #0ea5a9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            object-fit: cover;
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            margin-left: 18px;
+            font-weight: 600
+        }
+
+        nav a.cta {
+            background: var(--accent);
+            color: #04202a;
+            padding: 8px 12px;
+            border-radius: 10px
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 28px;
+            align-items: center;
+            margin-bottom: 32px
+        }
+
+        .hero-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+            padding: 28px;
+            border-radius: var(--radius);
+            box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6)
+        }
+
+        .headline {
+            font-size: 28px;
+            margin: 0 0 10px
+        }
+
+        .sub {
+            color: var(--muted);
+            margin: 0 0 18px
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px
+        }
+
+        .btn {
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-weight: 700;
+            border: 0;
+            cursor: pointer
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #04202a
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--muted)
+        }
+
+        .profile-card {
+            background: var(--card);
+            padding: 18px;
+            border-radius: 12px
+        }
+
+        .profile-photo img {
+            object-fit: contain;
+            width: 100%;
+            height: 260px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #0ea5a9, #7c3aed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 700
+        }
+
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 12px;
+            color: var(--muted)
+        }
+
+        section {
+            margin-bottom: 28px
+        }
+
+        h2 {
+            margin: 0 0 14px
+        }
+
+        .skills {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .skill {
+            background: var(--glass);
+            padding: 8px 12px;
+            border-radius: 10px;
+            color: var(--muted);
+            font-weight: 600
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px
+        }
+
+        .project {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+            padding: 14px;
+            border-radius: 12px
+        }
+
+        .proj-thumb img{
+            height: 120px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #334155, #0ea5a9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700
+        }
+
+        .proj-title {
+            margin-top: 10px;
+            font-weight: 700
+        }
+
+        .proj-desc {
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px
+        }
+
+        .input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: transparent;
+            color: inherit
+        }
+
+        textarea {
+            min-height: 140px;
+            resize: vertical
+        }
+
+        footer {
+            color: var(--muted);
+            text-align: center;
+            margin-top: 30px
+        }
+
+        /* Responsive */
+        @media (max-width:980px) {
+            .hero {
+                grid-template-columns: 1fr
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .profile-photo {
+                height: 220px
+            }
+        }
+
+        @media (max-width:520px) {
+            .projects-grid {
+                grid-template-columns: 1fr
+            }
+
+            nav a {
+                margin-left: 10px;
+                font-size: 14px
+            }
+
+            .headline {
+                font-size: 22px
+            }
+
+            .container {
+                padding: 18px;
+                margin: 18px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="brand">
+                <div class="avatar"><img src="./img/profile.png" alt=""></div>
+                <div>
+                    <div style="font-weight:800">Shakhor debnath</div>
+                    <div style="font-size:13px;color:var(--muted)">Frontend Developer</div>
+                </div>
+            </div>
+            <nav>
+                <a href="#projects">Projects</a>
+                <a href="#about">About</a>
+                <a href="#contact" class="cta">Hire Me</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero" style="padding-bottom: 50px;">
+                <div class="hero-card">
+                    <h1 class="headline">Hi — I’m Shakhor. I build beautiful interfaces & delightful experiences.</h1>
+                    <p class="sub">💻 Front-End Web Developer | Crafting Responsive, User-Friendly Interfaces
+                        I am a passionate Front-End Web Developer with a strong focus on creating clean, modern, and
+                        responsive websites. With expertise in HTML, CSS, JavaScript, and React, I bring designs to life
+                        and ensure seamless user experiences across devices. I specialize in building interactive
+                        interfaces, optimizing performance, and translating ideas into functional, visually appealing
+                        digital solutions.
+                        <br>
+                        <br>
+                        🔹 Skills & Tools:
+                        <br>
+                        Core: HTML5, CSS3.
+                        <br>
+                        Frameworks & Libraries: Bootstrap
+                    </p>
+                    <div class="buttons">
+                        <button class="btn btn-primary">See my work</button>
+                        <button class="btn btn-outline">Download CV</button>
+                    </div>
+
+                    <div style="margin-top:20px">
+                        <h3 style="margin:0 0 8px">Skills</h3>
+                        <div class="skills">
+                            <div class="skill">HTML</div>
+                            <div class="skill">CSS</div>
+                            <div class="skill">JavaScript</div>
+                            <div class="skill">Bootstrap</div>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="profile-card">
+                    <div class="profile-photo"><img src="./img/profile.png" alt=""></div>
+                    <div class="meta">
+                        <div>
+                            <div style="font-weight:700">Available for hire</div>
+                            <div style="font-size:13px;color:var(--muted)">Remote & onsite</div>
+                        </div>
+                        <div style="text-align:right">
+                            <div style="font-weight:800;font-size:18px">1+</div>
+                            <div style="font-size:13px;color:var(--muted)">Years experience</div>
+                        </div>
+                    </div>
+                </aside>
+            </section>
+
+            <section id="projects">
+                <h2>Selected Projects</h2>
+                <div class="projects-grid">
+                    <div class="project">
+                        <div class="proj-thumb"><img src="./img/Screenshot 2025-10-31 215349.png" alt=""></div>
+                        <div class="proj-title">Landing Page Design</div>
+                        <div class="proj-desc">A clean marketing landing page with responsive layout and animation.
+                        </div>
+                    </div>
+
+                    <div class="project">
+                        <div class="proj-thumb"><img src="./img/Screenshot 2025-11-01 201150.png" alt=""></div>
+                        <div class="proj-title">Dashboard UI</div>
+                        <div class="proj-desc">Data-rich dashboard with charts and accessibility in mind.</div>
+                    </div>
+
+                    <div class="project">
+                        <div class="proj-thumb"><img src="./img/Screenshot 2025-11-01 201751.png" alt=""></div>
+                        <div class="proj-title">Mobile App UI</div>
+                        <div class="proj-desc">Prototype & design system for iOS and Android.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about">
+                <h2>About Me</h2>
+                <p style="color:var(--muted)">Short bio: I enjoy building pixel-perfect interfaces, solving UX problems,
+                    and collaborating with product teams. I have worked on startups, agencies, and freelance projects.
+                </p>
+            </section>
+
+            <section id="contact">
+                <h2>Contact</h2>
+                <div class="contact">
+                    <form onsubmit="event.preventDefault();alert('Message sent — replace with real handler')">
+                        <input class="input" placeholder="Your name" required />
+                        <input class="input" placeholder="Your email" type="email" required style="margin-top:10px" />
+                        <textarea placeholder="Your message" required style="margin-top:10px"></textarea>
+                        <div style="margin-top:12px">
+                            <button class="btn btn-primary">Send message</button>
+                        </div>
+                    </form>
+
+                    <div
+                        style="padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);">
+                        <h3 style="margin-top:0">Let's connect</h3>
+                        <p class="proj-desc">Available for freelance or full-time roles. I usually reply within 24–48
+                            hours.</p>
+                        <div style="margin-top:12px">
+                            <div style="font-weight:700">Email</div>
+                            <div class="proj-desc">shakhordebnath5@gmail.com</div>
+                        </div>
+                        <div style="margin-top:12px">
+                            <div style="font-weight:700">Location</div>
+                            <div class="proj-desc">Bogra, Bangladesh</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <small>© <span id="year"></span>Built with Shakhor Debnath❤️</small>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
